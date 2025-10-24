@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* 🌌 NUNYA GLOBAL THEME  — Unified Futuristic Look */
+
+@layer base {
+  :root {
+    /* 🎨 "Light" mode but still dark (Midnight Cyan theme) */
+      --color-background: #14121a;
+      /* deep neutral background */
+      --color-foreground: #d9e3f0;
+      /* soft light text */
+      --color-surface: #1c1b24;
+      /* slightly lighter panels */
+      --color-border: rgba(255, 255, 255, 0.08);
+    
+      /* 🌙 Dark Mode Colors (even deeper shadows) */
+      --color-background-dark: #0a0a12;
+      --color-foreground-dark: #eaf6ff;
+      --color-surface-dark: #11111f;
+      --color-border-dark: rgba(255, 255, 255, 0.05);
+    
+      /* ✨ Accent Colors */
+      --color-accent: #00e8ff;
+      /* brighter cyan glow */
+      --color-primary: #00d2ff;
+      --color-secondary: #007e8f;
+    
+      /* 🪶 Fonts & Transitions */
+      --font-sans: "Poppins", "Inter", "Segoe UI", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ⚙️ Transitions */
+    --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* 🌗 Default Scheme */
+    color-scheme: light dark;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    transition: background-color var(--transition-smooth), color var(--transition-smooth);
+  }
+
+  /* 🌑 Dark Mode Overrides */
+  :root.dark {
+    background-color: var(--color-background-dark);
+    color: var(--color-foreground-dark);
+  }
+
+  /* 🌍 Base Styles */
+  body {
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--color-background), #e0f7ff);
+    color: var(--color-foreground);
+    transition: background var(--transition-smooth), color var(--transition-smooth);
+  }
+
+  .dark body {
+    background: radial-gradient(circle at 30% top, #0a0a12, #12122a, #1c1c3a);
+    color: var(--color-foreground-dark);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-smooth), text-shadow var(--transition-smooth);
+  }
+
+  a:hover {
+    color: var(--color-accent);
+    text-shadow: 0 0 6px var(--color-accent);
+  }
+}
+
+/* ✨ Universal Glow and Motion Utilities */
+@layer utilities {
+  .glow {
+    text-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+  }
+
+  .dark .glass {
+    background: rgba(10, 10, 20, 0.5);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .transition-all {
+    transition: all var(--transition-smooth);
+  }
+
+  /* 🫁 Breathing Glow Animation (AI-inspired) */
+  @keyframes breath {
+
+    0%,
+    100% {
+      box-shadow: 0 0 8px rgba(59, 245, 255, 0.25),
+        0 0 18px rgba(59, 245, 255, 0.4);
+      transform: scale(1);
+    }
+
+    50% {
+      box-shadow: 0 0 18px rgba(59, 245, 255, 0.8),
+        0 0 40px rgba(59, 245, 255, 0.6);
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes breathFast {
+
+    0%,
+    100% {
+      box-shadow: 0 0 10px rgba(59, 245, 255, 0.4);
+      transform: scale(1);
+    }
+
+    50% {
+      box-shadow: 0 0 24px rgba(59, 245, 255, 0.9);
+      transform: scale(1.1);
+    }
+  }
+
+  .breath {
+    animation: breath 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .breath-fast:hover {
+    animation: breathFast 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  /* 🌗 Theming Helpers */
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  .dark .bg-surface {
+    background-color: var(--color-surface-dark);
+  }
+
+  .border-theme {
+    border-color: var(--color-border);
+  }
+
+  .dark .border-theme {
+    border-color: var(--color-border-dark);
+  }
+
+  /* 🧠 AI Glow Accent (Reusable for borders, buttons, indicators) */
+  .ai-glow {
+    box-shadow: 0 0 15px rgba(59, 245, 255, 0.6),
+      0 0 30px rgba(59, 245, 255, 0.3);
+    transition: box-shadow var(--transition-smooth);
+  }
+
+  .ai-glow:hover {
+    box-shadow: 0 0 25px rgba(59, 245, 255, 0.9),
+      0 0 45px rgba(59, 245, 255, 0.4);
+  }
+}
+
+/* 🌈 Smooth Theme Transition for Everything */
+*,
+*::before,
+*::after {
+  transition: background-color var(--transition-smooth),
+    color var(--transition-smooth),
+    border-color var(--transition-smooth),
+    box-shadow var(--transition-smooth),
+    text-shadow var(--transition-smooth);
+}
+
+
+:root {
+  --nunya-accent: #00c7d6;
+  /* for light mode */
+  --nunya-glow: 0 0 12px rgba(59, 245, 255, 0.6);
+}
+
+.dark {
+  --nunya-accent: #3bf5ff;
+  /* brighter glow for dark mode */
+  --nunya-glow: 0 0 18px rgba(59, 245, 255, 0.9);
+}
+
+/* Logo text */
+.nunya-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: var(--nunya-accent);
+  letter-spacing: 0.1em;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: var(--nunya-glow);
+}
+
+/* Hover interaction — glow "breathes" */
+.nunya-logo:hover {
+  text-shadow: 0 0 24px rgba(59, 245, 255, 1);
+  transform: scale(1.03);
+}
